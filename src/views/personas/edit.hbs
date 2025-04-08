@@ -1,0 +1,68 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3 class="text-uppercase"> Cambiaste de opinión... </h3>
+                </div>
+                <div class="card-body">
+                    <form action="/edit/{{asistente.id}}" method="post">
+                    <div class="input-group mt-2">
+                        <label for="" class="input-group-text">
+                            Nombre completo
+                        </label>
+                        <input class="form-control" type="text" name="name" id="name" value="{{asistente.name}}" placeholder="Ejemplo: Juan Carlos Hernandez">
+                    </div>
+                                        <div class="input-group mt-2">
+                        <label for="" class="input-group-text">
+                            Asistencia
+                        </label>
+                            <div class="form-check form-check-inline m-2">
+                             <input class="form-check-input" type="radio" name="asistencia" id="asistencia" value="si">
+                             <label class="form-check-label" for="inlineRadio1">Sí</label>
+                            </div>
+                            <div class="form-check form-check-inline m-2">
+                             <input class="form-check-input" type="radio" name="asistencia" id="asistencia" value="no">
+                             <label class="form-check-label" for="inlineRadio1">No</label>
+                            </div>
+                    </div>
+                    <div class="input-group mt-2">
+                        <label for="" class="input-group-text">
+                            Cover
+                        </label>
+                       <select name="cover" id="cover">
+                        <option value="{{asistente.cover}}">{{asistente.cover}}</option>
+                            {{#each regalos}}
+                        
+                            <option value="{{cover}}">{{cover}}</option>
+
+                            {{/each}}
+                       </select>
+
+
+                    </div>
+                    <div class="input-group mt-2">
+                         <label for="" class="input-group-text">
+                            Regalo
+                        </label>
+                       <select name="regalo" id="regalo">
+                        <option value="{{asistente.regalo}}">{{asistente.regalo}}</option>
+                            {{#each regalos}}
+                        
+                            <option value="{{regalo}}">{{regalo}}</option>
+
+                            {{/each}}
+                       </select>
+
+
+                    </div>
+                    <div class="form-group mt-4 d-grid gap-2">
+                        <button class="btn btn-success"> Actualizar</button>
+                    </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+
+
+body {
+background-image: url('../../public/img/baby.webp'); /* Reemplaza 'tu-imagen.jpg' con la ruta de tu imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-repeat: no-repeat;
+    background-color: rgb(4, 59, 66); /* Evita que la imagen se repita */
+  }
+
+.oooh-baby-regular {
+    font-family: "Oooh Baby", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+.b {
+  font-family: "Oooh Baby", cursive;
+}

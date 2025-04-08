@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row mt-5 ">
+        {{#if regalos}}
+       <h3>Lista de regalos</h3>
+            <table class="table table-striped text-center" style="width: 900px;">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Regalo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {{#each regalos}}
+                        <tr>
+                            <td>{{regalo}}</td>
+
+                            <td></td>
+                        </tr>
+                     {{/each}}
+                </tbody>
+                <tfoot>
+                     <tr class="table-dark">
+                        <td colspan="4">Listado de regalos</td>
+                        <p> Estas son algunas tiendas sugueridas:</p>
+                        <ol>
+                            <li><a class="link-warning" href="https://okolo.com.co/collections/obsequios" target="_blank">Okolo</a></li>
+                            <li><a class="link-warning" href="https://www.amazon.com/-/es/Cubierta-pa%C3%B1al-impermeable-reutilizable-preplegados/dp/B0CSXNCZ5J?th=1" target="_blank">Amazon</a></li>
+                            <li><a class="link-warning" href="https://linktr.ee/ecopipocolombia" target="_blank">Ecopipocolombia</a></li>
+                            <li><a class="link-warning" href="https://www.babymoon.com.co/accesorios-ecologicos/?mpage=2" target="_blank">Babymoon</a></li>
+                            <li><a class="link-warning" href="https://www.amazon.com/Calentador-esterilizador-temporizador-descongelar-temperatura/dp/B07YJKWTYW/ref=asc_df_B07YJKWTYW?language=es_US&mcid=df1a9ccfe57333c79d0ce15a3abca7c6&tag=cogoshpadde-20&linkCode=df0&hvadid=720381877356&hvpos=&hvnetw=g&hvrand=16422504692349771916&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9209723&hvtargid=pla-931177564304&th=1" target="_blank">Amazon</a></li>
+                            <li><a class="link-warning" href="https://articulo.mercadolibre.com.co/MCO-1472081567-funda-termica-calentador-de-teteros-biberones-portatil-usb-_JM?searchVariation=181487955600#polycard_client=search-nordic&searchVariation=181487955600&position=17&search_layout=grid&type=item&tracking_id=e6bcc795-f3b3-4ba3-97ba-e9e4e3cc15e2" target="_blank">Mercadolibre</a></li>
+                        </ol>
+                    </tr>
+                </tfoot>
+                           <table class="table table-striped text-center" style="width: 900px;">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Cover</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {{#each regalos}}
+                        <tr>
+                            <td>{{cover}}</td>
+
+                            <td></td>
+                        </tr>
+                     {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        <td colspan="4">Listado de regalos para el cover</td>
+                    </tr>
+                </tfoot>
+            </table>
+       
+        
+        {{else}}
+            <div class="card text-center mx-auto" style="width: 350px">
+                <div class="card-header">
+                    <h3>La lista de regalos esta vacía</h3>
+                </div>
+                <div class="card-body">
+                    <p>Pero puedes registrar tu asistencia</p>
+                    <a href="/add" class="btn btn-primary">Asistencia</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

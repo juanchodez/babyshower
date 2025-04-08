@@ -1,0 +1,53 @@
+<div class="container">
+    <div class=" mt-5 ">
+        {{#if asistentes}}
+       <h3 class="text-center">Lista de invitados</h3>
+            <table class="table table-striped text-center" >
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Nombre completo</th>
+                        <th scope="col">Asistencia</th>
+                        <th scope="col">Cover</th>
+                        <th scope="col">Regalo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {{#each asistentes}}
+                        <tr>
+                            <td>{{name}}</td>
+                            <td>{{asistencia}}</td>
+                            <td>{{cover}}</td>
+                            <td>{{regalo}}</td>
+                            <td>
+                                <div class="btn-group">
+                                 
+                                   <a href="/delete/{{id}}" class="btn btn-success p-2">
+                                   <i class="fa-solid fa-trash"></i></a>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                     {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="table-dark">
+                        <td colspan="4">Registro de asistencia</td>
+                    </tr>
+                </tfoot>
+            </table>
+       
+        
+        {{else}}
+            <div class="card text-center mx-auto" style="width: 350px">
+                <div class="card-header">
+                    <h3>Debes añadir tus datos para confirmar</h3>
+                </div>
+                <div class="card-body">
+                    <p>Presiona para registrar tu asistencia</p>
+                    <a href="/add" class="btn btn-primary">Confirmar asistencia</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
