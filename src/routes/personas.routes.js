@@ -86,16 +86,6 @@ router.get('/delete/:id', async(req, res)=>{
         }
        res.redirect('/list');
     })
-    
-    
-    try {
-        const {id} = req.params;
-        await pool.query('DELETE FROM personas WHERE id = ?', [id]);
-        await pool.query('DELETE FROM asistentes WHERE id = ?', [id]);
-        res.redirect('/list');
-    } catch (error) {
-        res.status(500).json({message:err.message});
-    }
 });
 
 export default router;
