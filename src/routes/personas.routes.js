@@ -43,11 +43,12 @@ router.get('/list', async(req, res)=>{
 });
 
 router.get('/gifts', async(req, res)=>{
- pool.query('SELECT * FROM regalos', (error, results) => {
+  pool.query('SELECT * FROM regalos', (error, result) => {
     if (error) {
       throw error
     }
-    response.status(200).json(results.rows)
+    const [results] = result.rows;
+    res.render('personas/gifts', {regalos: results});
   })
 });
 
