@@ -21,7 +21,7 @@ router.post('/add', async(req, res)=>{
     const newAsistente = {
             name, cover, regalo, asistencia
     }
-    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results) => {response.status(200).json(responseReturn)};) 
+    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results) => {response.status(200).json(responseReturn)}) 
     pool.query('INSERT INTO asistentes SET (name, cover, regalo, asistencia) VALUES ($1, $2, $3, $4)', [name,cover, regalo, asistencia], (error, results) => {
         if (error) {
             throw error
@@ -79,6 +79,15 @@ router.post('/edit/:id', async(req,res)=>{
 });
 
 router.get('/delete/:id', async(req, res)=>{
+    const id = parseInt(req.params.id)
+    pool.query('DELETE FROM asistentes WHERE id = $1', [id], (error, results) => {
+        if (error) {
+            throw error
+        }
+       res.redirect('/list');
+    })
+    
+    
     try {
         const {id} = req.params;
         await pool.query('DELETE FROM personas WHERE id = ?', [id]);
