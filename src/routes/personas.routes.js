@@ -20,9 +20,10 @@ router.post('/add', async(req, res)=>{
 
     pool.query('INSERT INTO asistentes SET (name, cover, regalo, asistencia) VALUES ($1, $2, $3, $4)', [name,cover, regalo, asistencia], (error, results) => {
         if (error) {
+            console.error("Error en la consulta SQL:", error);
             throw error
         }
-        res.send("POST request received.");
+        res.redirect('/list');
     })
    
 });
