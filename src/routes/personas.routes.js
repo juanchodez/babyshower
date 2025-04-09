@@ -43,14 +43,12 @@ router.get('/list', async(req, res)=>{
 });
 
 router.get('/gifts', async(req, res)=>{
-    try{
-        const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/gifts', {regalos: result.rows});
+ pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
     }
-    catch(err){
-        console.error("Error en la consulta:", err);
-        res.status(500).json({message:err.message});
-    }
+    response.status(200).json(results.rows)
+  })
 });
 
 router.get('/edit/:id', async(req, res)=>{
