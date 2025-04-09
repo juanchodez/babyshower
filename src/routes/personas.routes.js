@@ -43,7 +43,7 @@ router.get('/list', async(req, res)=>{
 });
 
 router.get('/gifts', async(req, res)=>{
- pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+ pool.query('SELECT * FROM regalos', (error, results) => {
     if (error) {
       throw error
     }
