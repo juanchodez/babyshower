@@ -6,7 +6,8 @@ const pool = new Pool({
   user: 'dbu1330973',
   password: 'QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK',
   database: 'dbs14100776',
-  port: 5432 // El puerto debe ser un número
+  port: 5432, // El puerto debe ser un número
+  ssl: true
 });
 
 export default pool;
