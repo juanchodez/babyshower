@@ -17,19 +17,14 @@ router.get('/add', async(req, res) =>{
 
 router.post('/add', async(req, res)=>{
     const { name, cover, regalo, asistencia } = req.body;
-    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results) => {
-        if (error) {
-            throw error
-        }
+
     pool.query('INSERT INTO asistentes SET (name, cover, regalo, asistencia) VALUES ($1, $2, $3, $4)', [name,cover, regalo, asistencia], (error, results) => {
         if (error) {
             throw error
         }
         res.redirect('/list');
     })
-    }) 
-
-    
+   
 })
 
 router.get('/list', async(req, res)=>{
