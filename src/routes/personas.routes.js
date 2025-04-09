@@ -47,8 +47,8 @@ router.get('/gifts', async(req, res)=>{
     if (error) {
       throw error
     }
-    const [results] = result.rows;
-    res.render('personas/gifts', {regalos: results});
+
+    res.render('personas/gifts', {regalos: result.rows});
   })
 });
 
