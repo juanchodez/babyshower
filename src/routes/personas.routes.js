@@ -17,17 +17,18 @@ router.get('/add', async(req, res) =>{
 
 router.post('/add', async(req, res)=>{
     const { name, cover, regalo, asistencia } = req.body;
-
-    const newAsistente = {
-            name, cover, regalo, asistencia
-    }
-    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results) => {response.status(200).json(responseReturn)}) 
+    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results) => {
+        if (error) {
+            throw error
+        }
     pool.query('INSERT INTO asistentes SET (name, cover, regalo, asistencia) VALUES ($1, $2, $3, $4)', [name,cover, regalo, asistencia], (error, results) => {
         if (error) {
             throw error
         }
         res.redirect('/list');
     })
+    }) 
+
     
 })
 
