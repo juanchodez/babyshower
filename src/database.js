@@ -1,7 +1,7 @@
 import {createPool} from 'mysql2/promise';
 
  const pool = createPool({
-    host: 'postgresql://dbu1330973:QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK@dpg-cvqrgspr0fns73fqenm0-a/dbs14100776',
+    host: 'dpg-cvqrgspr0fns73fqenm0-a',
     user: 'dbu1330973',
     password: 'QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK',
     database: 'dbs14100776',
