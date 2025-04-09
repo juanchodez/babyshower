@@ -22,7 +22,7 @@ router.post('/add', async(req, res)=>{
         if (error) {
             throw error
         }
-        res.redirect('personas/list');
+        res.send("POST request received.");
     })
    
 })
