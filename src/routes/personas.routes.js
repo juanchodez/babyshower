@@ -5,45 +5,44 @@ import pool from "../database.js";
 const router = Router();
 
 router.get('/add', async(req, res) =>{
-    try {
-        const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/add', { regalos: result.rows });
-    } catch (err) {
-        res.status(500).json({message:err.message});
+    pool.query('SELECT DISTINCT regalo FROM regalos', (error, result) => {
+    if (error) {
+      throw error
     }
+
+    res.render('personas/add', {regalos: result.rows});
+  })
     
 });
 
 router.post('/add', async(req, res)=>{
-    try {
-        const {name, cover, regalo, asistencia } = req.body;
-        const newPersona = {
-            name, asistencia
-        }; 
-        const newAsistente = {
+    const { name, cover, regalo, asistencia } = req.body;
+
+    const newAsistente = {
             name, cover, regalo, asistencia
-        }
-       await pool.query('INSERT INTO personas SET ?', [newPersona]);
-        await pool.query('INSERT INTO asistentes SET ?', [newAsistente]);
-        res.redirect('/list');
-    } catch (err) {
-        res.status(500).json({message:err.message});
-        console.log(newAsistente[name]);
     }
+    pool.query('INSERT INTO personas SET (name, asistencia) VALUES ($1, $4)', [name, asistencia], (error, results); 
+    pool.query('INSERT INTO asistentes SET (name, cover, regalo, asistencia) VALUES ($1, $2, $3, $4)', [name,cover, regalo, asistencia], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.redirect('/list');
+    })
+    
 })
 
 router.get('/list', async(req, res)=>{
-    try{
-        const [result] = await pool.query('SELECT * FROM asistentes');
-        res.render('personas/list', {asistentes: result.rows});
+  pool.query('SELECT * FROM asistentes', (error, result) => {
+    if (error) {
+      throw error
     }
-    catch(err){
-        res.status(500).json({message:err.message});
-    }
+
+    res.render('personas/list', {regalos: result.rows});
+  })
 });
 
 router.get('/gifts', async(req, res)=>{
-  pool.query('SELECT * FROM regalos', (error, result) => {
+  pool.query('SELECT DISTINCT regalo FROM regalos', (error, result) => {
     if (error) {
       throw error
     }
