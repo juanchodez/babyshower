@@ -25,7 +25,7 @@ router.post('/add', async(req, res)=>{
         res.send("POST request received.");
     })
    
-})
+});
 
 router.get('/list', async(req, res)=>{
   pool.query('SELECT * FROM asistentes', (error, result) => {
@@ -47,32 +47,6 @@ router.get('/gifts', async(req, res)=>{
   })
 });
 
-router.get('/edit/:id', async(req, res)=>{
-    try {
-        const {id} = req.params;
-        const [persona] = await pool.query('SELECT * FROM asistentes WHERE id = ?', [id]);
-        const personaEdit = persona[0];
-        res.render('personas/edit', {asistente: personaEdit});
-
-    } catch (error) {
-        res.status(500).json({message:err.message});
-    }
-});
-
-router.post('/edit/:id', async(req,res)=>{
-    try {
-        const {name, cover, regalo, asistencia} = req.body;
-        const {id} = req.params;
-        const editPersona = {name, cover, regalo, asistencia};
-        const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/edit/:id', { regalos: result.rows });
-        await pool.query('UPDATE asistentes SET id = ? WHERE id = ?', [editPersona, id]);
-        res.redirect('/list');
-
-    } catch (error) {
-        res.status(500).json({message:err.message});
-    }
-});
 
 router.get('/delete/:id', async(req, res)=>{
     const id = parseInt(req.params.id)
