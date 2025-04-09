@@ -5,7 +5,7 @@ import pool from "../database.js";
 const router = Router();
 
 router.get('/add', async(req, res) =>{
-    pool.query('SELECT DISTINCT regalo FROM regalos', (error, result) => {
+    pool.query('SELECT * FROM regalos', (error, result) => {
     if (error) {
       throw error
     }
