@@ -42,9 +42,9 @@ router.get('/list', async(req, res)=>{
     }
 });
 
-router.get('/gifts', (req, res)=>{
+router.get('/gifts', async(req, res)=>{
     try{
-        const [result] =  pool.query('SELECT * FROM regalos');
+        const [result] = await pool.query('SELECT * FROM regalos');
         res.render('personas/gifts', {regalos: result.rows});
     }
     catch(err){
