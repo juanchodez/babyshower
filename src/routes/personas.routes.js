@@ -34,7 +34,7 @@ router.get('/list', async(req, res)=>{
       throw error
     }
 
-    res.render('personas/list', {regalos: result.rows});
+    res.render('personas/list', {asistentes: result.rows});
   })
 });
 
