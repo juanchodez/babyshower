@@ -1,11 +1,11 @@
 import {createPool} from 'mysql2/promise';
 
  const pool = createPool({
-    host: 'db5017618622.hosting-data.io',
+    host: 'postgresql://dbu1330973:QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK@dpg-cvqrgspr0fns73fqenm0-a/dbs14100776',
     user: 'dbu1330973',
-    password: 'HaciLuvita@135km.',
+    password: 'QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK',
     database: 'dbs14100776',
-    port: '3306'
+    port: '5432'
 }); 
 
 /*const pool = createPool({
