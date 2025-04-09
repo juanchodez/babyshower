@@ -1,19 +1,12 @@
-import {createPool} from 'mysql2/promise';
+import pkg from 'pg';
+const { Pool } = pkg;
 
- const pool = createPool({
-    host: 'dpg-cvqrgspr0fns73fqenm0-a',
-    user: 'dbu1330973',
-    password: 'QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK',
-    database: 'dbs14100776',
-    port: '5432'
-}); 
-
-/*const pool = createPool({
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: 'HaciLuvitalia135.',
-    database: 'babyshower'
-}); */
+const pool = new Pool({
+  host: 'dpg-cvqrgspr0fns73fqenm0-a.oregon-postgres.render.com',
+  user: 'dbu1330973',
+  password: 'QLuQBUMi5Qdiiu1pgrbETvdONP3zKgpK',
+  database: 'dbs14100776',
+  port: 5432 // El puerto debe ser un número
+});
 
 export default pool;
