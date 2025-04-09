@@ -7,7 +7,7 @@ const router = Router();
 router.get('/add', async(req, res) =>{
     try {
         const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/add', { regalos: result });
+        res.render('personas/add', { regalos: result.rows });
     } catch (err) {
         res.status(500).json({message:err.message});
     }
