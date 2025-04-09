@@ -48,6 +48,7 @@ router.get('/gifts', async(req, res)=>{
         res.render('personas/gifts', {regalos: result.rows});
     }
     catch(err){
+        console.error("Error en la consulta:", err);
         res.status(500).json({message:err.message});
     }
 });
