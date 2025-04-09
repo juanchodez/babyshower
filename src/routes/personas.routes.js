@@ -35,7 +35,7 @@ router.post('/add', async(req, res)=>{
 router.get('/list', async(req, res)=>{
     try{
         const [result] = await pool.query('SELECT * FROM asistentes');
-        res.render('personas/list', {asistentes: result});
+        res.render('personas/list', {asistentes: result.rows});
     }
     catch(err){
         res.status(500).json({message:err.message});
@@ -45,7 +45,7 @@ router.get('/list', async(req, res)=>{
 router.get('/gifts', async(req, res)=>{
     try{
         const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/gifts', {regalos: result});
+        res.render('personas/gifts', {regalos: result.rows});
     }
     catch(err){
         res.status(500).json({message:err.message});
@@ -70,7 +70,7 @@ router.post('/edit/:id', async(req,res)=>{
         const {id} = req.params;
         const editPersona = {name, cover, regalo, asistencia};
         const [result] = await pool.query('SELECT * FROM regalos');
-        res.render('personas/edit/:id', { regalos: result });
+        res.render('personas/edit/:id', { regalos: result.rows });
         await pool.query('UPDATE asistentes SET id = ? WHERE id = ?', [editPersona, id]);
         res.redirect('/list');
 
