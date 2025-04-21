@@ -39,7 +39,7 @@ router.get('/list', async(req, res)=>{
 });
 
 router.get('/gifts', async(req, res)=>{
-  pool.query('SELECT DISTINCT regalo FROM regalos', (error, result) => {
+  pool.query('SELECT * FROM regalos', (error, result) => {
     if (error) {
       throw error
     }
